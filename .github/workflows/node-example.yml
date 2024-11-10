@@ -1,0 +1,21 @@
+name: Test and Deploy Node App
+
+on:
+  push:
+    branches:
+    - 'main'
+
+jobs:
+  test-and-build:
+    runs-on: linux-latest
+    steps:
+      - name: Setup Node 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npm install
+      - name: Test
+        run: npm test
+
+  
