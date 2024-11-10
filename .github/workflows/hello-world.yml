@@ -1,0 +1,20 @@
+name: Hello World
+
+on:
+  push:
+
+jobs:
+  say-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Listing before Checkout
+        run: ls -a
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: List Current Directory
+        run: ls -a
+      - name: List Project Directory
+        run: ls ${{ github.workspace }}
+      - name: Hello World Message
+        run: echo 'Hello World'
+  

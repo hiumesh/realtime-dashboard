@@ -1,0 +1,30 @@
+name: Test and Deploy Node App
+
+on:
+  push:
+    branches:
+    - 'main'
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: List Current Directory
+        run: ls -a
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: npm install
+      - name: Test
+        working-directory: ./backend
+        run: npm run test
+      - name: Build
+        working-directory: ./backend
+        run: npm run build
+
+  
